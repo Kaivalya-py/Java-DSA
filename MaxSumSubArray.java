@@ -8,7 +8,7 @@ class MaxSumSubArray {
 			maxEnd += arr[i];
 			if (maxEnd < 0)
 				maxEnd = 0;
-			else if (maxEnd > maxTillNow)
+			else if (maxTillNow < maxEnd)
 				maxTillNow = maxEnd;
 		}
 		return maxTillNow;
