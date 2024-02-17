@@ -3,23 +3,24 @@ import java.util.*;
 public class Prime {
     public static void main(String[] args){
         Scanner input = new Scanner(System.in);
-        int start = input.nextInt();
-        int end = input.nextInt();
+        int n = input.nextInt();
+        boolean[] prime = new boolean[n];
+        for(int i=2;i<n;i++){
+            prime[i] = true;
+        }
+        for(int i=2; i*i<=n; i++){
+            if(prime[i] == true){
+                for(int j=i*i; j<n; j+=i){
+                    prime[j] = false;
+                }
+            }
+        }
 
-        for(int i=start; start<=end; i++){
-            if(isPrime(i))
+        for(int i=2; i<n; i++){
+            if(prime[i] == true){
                 System.out.print(i+" ");
+            }
         }
-
-    }
-
-    static boolean isPrime(int n){
-        if(n<2)
-            return false;
-        for(int i=2; i<=Math.sqrt(n); i++){
-            if(n%i==0)
-                return false;
-        }
-        return true;
+        input.close();
     }
 }
